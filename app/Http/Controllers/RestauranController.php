@@ -14,9 +14,15 @@ class RestauranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
+    
     {
-        $restauran=Restauran::all();
-        return view('showall',['res'=>$restauran]);
+        $foods =Category::find(1)->Resaurant()->get();
+        $food2 =Category::find(2)->Resaurant()->get();
+        $food3 =Category::find(3)->Resaurant()->get();
+        
+        $res=Restauran::all();
+        return view('showall',compact('foods','food2','food3','res'));
     }
 
     /**

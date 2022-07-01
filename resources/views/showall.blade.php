@@ -10,6 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    .food {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+    </style>
 </head>
 
 <body>
@@ -106,7 +112,7 @@
         <!-- Wrap the rest of the page in another container to center all the content. -->
 
         <div class="container marketing">
-            <button><a class="btn btn-success " href="{{route('restauran.create')}}"> Create a Car</a></button>
+            <button><a class="btn btn-success" href="{{route('restauran.create')}}"> Create a Car</a></button>
 
             <!-- Three columns of text below the carousel -->
             <div class="row">
@@ -132,13 +138,68 @@
             <!-- /END THE FEATURETTES -->
 
         </div><!-- /.container -->
+        @foreach ($foods as $food)
+        @csrf
+        <div>
+            <div class="food">
+                <div>
+                    <img style="width:500px" src=" /images/{{$food->image}}" alt="">
+                    <div>
+                        <div>{{$food->name}}</div>
+                        <div>{{$food->description}}</div>
+                    </div>
+                    <div>----------------------------------------------------</div>
+                    <div>
+                        <h4>{{$food->amount}}VND</h4>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <h1>-------------------------------------------------Bánh Mì--------------------------------------</h1>
+            @foreach ($food2 as $food)
+            @csrf
+            <div>
+                <div class="food">
+                    <div>
+                        <a><img ssrc="/images/{{$food->image}}" alt=""></a>
+                    </div>
+                    <div>
+                        <div>{{$food->name}}</div>
+                        <div>{{$food->description}}</div>
+                    </div>
+                    <div>----------------------------------------------------</div>
+                    <div>
+                        <h4>{{$food->amount}}VND</h4>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <h1>-------------------------------------------------Bún Phở--------------------------------------</h1>
+            @foreach ($food3 as $food)
+            @csrf
+            <div>
+                <div class="food">
+                    <div>
+                        <a><img ssrc="/images/{{$food->image}}" alt=""></a>
+                    </div>
+                    <div>
+                        <div>{{$food->name}}</div>
+                        <div>{{$food->description}}</div>
+                    </div>
+                    <div>----------------------------------------------------</div>
+                    <div>
+                        <h4>{{$food->amount}}VND</h4>
+                    </div>
+                </div>
+            </div>
+            @endforeach
 
 
-        <!-- FOOTER -->
-        <footer class="container">
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+            <!-- FOOTER -->
+            <footer class="container">
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </footer>
     </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
