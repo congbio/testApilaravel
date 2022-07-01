@@ -37,8 +37,8 @@
                     <span style="background-color: wheat; color:red"> {{$errors->first('image')}}</span>
                 </div>
                 <div class="form-group col-6"><label style="color:wheat" for="exampleInputPassword1">Price</label><input
-                        type="type" name="amount" class="form-control" onchange="changeImage(event)"
-                        id="exampleInputPassword1" placeholder="Enter image">
+                        type="text" name="amount" class="form-control" id=" exampleInputPassword1"
+                        placeholder="Enter amount">
                     <img style="width:200px;height: 200px;" id="newImage" src="" />
                     <span style="background-color: wheat; color:red"> {{$errors->first('amount')}}</span>
                 </div>

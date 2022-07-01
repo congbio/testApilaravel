@@ -60,8 +60,8 @@ class RestauranController extends Controller
                 'image.max'=>'Chỉ chấp nhận hình ảnh dưới 2Mb',
             ]);
             $file = $request->file('image');
-            $name = 'image/'.time().'_'.$file->getClientOriginalName();
-            $destinationPath=public_path('image');
+            $name = time().'_'.$file->getClientOriginalName();
+            $destinationPath=public_path('images');
             $file -> move($destinationPath, $name);
         }
         
