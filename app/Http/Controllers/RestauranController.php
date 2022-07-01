@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\Restauran;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class RestauranController extends Controller
      */
     public function create()
     {
-        //
+        return view('Create',['res'=> Category::get()]);
     }
 
     /**
@@ -35,7 +37,43 @@ class RestauranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name='';
+        
+        $validated = $request->validate([
+            'description' => 'required',
+            'name' => 'required',
+            'amount' => 'required',
+            'image' => 'required',
+           
+        ],[
+                'description.required' => 'Chưa nhập mô tả',
+                'name.required' => 'Chưa nhập mô tả',
+                'image.required' => 'Chưa nhập mô tả',
+                'amount.required' => 'Chưa nhập mô tả',
+                
+        ]);
+        if($request -> hasfile('image')){
+            $this->validate($request,[
+                'image'=>'mimes:jpg,png,gif,jpeg|max: 2048'
+            ],[
+                'image.mimes'=>'Chỉ chấp nhận file hình ảnh',
+                'image.max'=>'Chỉ chấp nhận hình ảnh dưới 2Mb',
+            ]);
+            $file = $request->file('image');
+            $name = 'image/'.time().'_'.$file->getClientOriginalName();
+            $destinationPath=public_path('image');
+            $file -> move($destinationPath, $name);
+        }
+        
+        $res = new Restauran();
+        $res -> description=$request->description;
+        $res->name = $request -> name;
+        $res->amount = $request -> amount;
+        $res->category_id = $request->category_id;
+        $res -> image = $name;
+        $res -> save();
+        
+        return redirect()-> route('restauran.index')->with('success', 'Bạn đã Thêm thành công');
     }
 
     /**

@@ -42,7 +42,8 @@
 
     <main role="main">
 
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+        <div id="myCarousel" class="carousel slide mt-5" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -105,6 +106,7 @@
         <!-- Wrap the rest of the page in another container to center all the content. -->
 
         <div class="container marketing">
+            <button><a class="btn btn-success " href="{{route('restauran.create')}}"> Create a Car</a></button>
 
             <!-- Three columns of text below the carousel -->
             <div class="row">

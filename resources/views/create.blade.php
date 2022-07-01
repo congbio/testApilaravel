@@ -19,19 +19,10 @@
     }
     </style>
     <div class="container mt-5" style="background-color:black">
-        <button><a class="btn btn-primary" href="{{route('cars.index')}}">View All </a></button><a
-            class="btn btn-success" href="{{route('cars.create')}}">Create New car</a>
-        <!-- @if ($errors->any()) <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $error) <li> {
-                    {
-                    $error
-                    }
-                    }
+        <button><a class="btn btn-primary" href="{{route('restauran.index')}}">View All </a></button><a
+            class="btn btn-success" href="{{route('restauran.create')}}">Create New car</a>
 
-                </li>@endforeach </ul>
-        </div>
-        @endif -->
-        <form action="{{route('cars.store')}}" method="POST" enctype="multipart/form-data">@csrf <div class="row">
+        <form action="{{route('restauran.store')}}" method="POST" enctype="multipart/form-data">@csrf <div class="row">
                 <div class="form-group col-6"><label style="color:wheat" for="exampleInputEmail1">Name</label><input
                         type="text" class="form-control" id="exampleInputEmail1" name="name"
                         aria-describedby="emailHelp" placeholder="Enter name car">
@@ -45,24 +36,30 @@
                     <img style="width:200px;height: 200px;" id="newImage" src="" />
                     <span style="background-color: wheat; color:red"> {{$errors->first('image')}}</span>
                 </div>
+                <div class="form-group col-6"><label style="color:wheat" for="exampleInputPassword1">Price</label><input
+                        type="type" name="amount" class="form-control" onchange="changeImage(event)"
+                        id="exampleInputPassword1" placeholder="Enter image">
+                    <img style="width:200px;height: 200px;" id="newImage" src="" />
+                    <span style="background-color: wheat; color:red"> {{$errors->first('amount')}}</span>
+                </div>
             </div>
-            <div class="form-group"><label style="color:wheat" for="exampleInputPassword1">Make</label><input
-                    type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="make"
-                    placeholder="Enter Make ">
-                <span style="background-color: wheat; color:red"> {{$errors->first('make')}}</span>
+            <div class="form-group"><label style="color:wheat" for="exampleInputPassword1">Descripton</label><input
+                    type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    name="description" placeholder="Enter Make ">
+                <span style="background-color: wheat; color:red"> {{$errors->first('description')}}</span>
             </div>
             <div class="form-group">
-                <select name="pro_id" class="custom-select" aria-label="Default select example">
-                    @foreach ($producers as $pro)
-                    <option value="{{$pro->id}}">
-                        {{$pro->pro_name}}</option>
+                <select name="category_id" class="custom-select" aria-label="Default select example">
+                    @foreach ($res as $re)
+                    <option value="{{$re->id}}">
+                        {{$re->category_name}}</option>
                     @endforeach
 
                 </select>
             </div>
 
 
-            <button type=" submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <script>
