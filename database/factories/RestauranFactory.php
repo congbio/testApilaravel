@@ -16,7 +16,7 @@ class RestauranFactory extends Factory
         
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->name(),
+            'description' => $this->faker->paragraph(1),
             'category_id' => rand(1,4),
             'amount' => $this->faker->unique()->randomDigit,
             'image'=>'hinh'.rand(1,4).'.jpg',     
